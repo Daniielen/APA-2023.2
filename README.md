@@ -1,3 +1,8 @@
 # 🫧 Analise e Projeto de Algoritmos
-Códigos realizados durante o curso de Análise e Projeto de Algoritmos.
-Em breve, criarei os tópicos bonitinhos aqui! :) 
+## 📌 Projetos / Exercícios
+### 🧱 Primeira etapa:
+- [x] Lista de exercício
+- [ ] Projeto I
+- [ ] Projeto II
+- [ ] Projeto III
+- [ ] Projeto IV
