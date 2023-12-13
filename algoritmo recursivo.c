@@ -86,6 +86,60 @@ Br difCincoU(Br tabela[], int i) {
 		difCincoU(tabela, i-1);
 	}
 }
+	
+Br selectionSort(Br tabela[], int i) {
+	int min;
+	int j=0;
+	char aux_time[255];
+	int aux_pontos, aux_pos;
+	
+	if (i == 10) {
+		return;
+	} else {
+		min = i; // Posição a ser ordenada
+		
+		for (j = i+1; j < 10; j++) {
+			if(strcmp(tabela[min].time, tabela[j].time) > 0) {
+				min = j; // indice 2
+			}
+			strcpy(aux_time, tabela[min].time);
+			aux_pontos = tabela[min].pontos;
+			aux_pos = tabela[min].posicao;
+			
+			strcpy(tabela[min].time, tabela[i].time);
+			tabela[min].pontos = tabela[i].pontos;
+			tabela[min].posicao = tabela[i].posicao;
+	
+			strcpy(tabela[i].time, aux_time);
+			tabela[i].pontos = aux_pontos;
+			tabela[i].posicao = aux_pos;
+			
+		}
+		printf("[%i] %s\n", i, tabela[i].time);
+		selectionSort(tabela, i+1);	
+	}
+}
+
+Br insertionSort(Br tabela[], int i) {
+	int j;
+	Br atual;
+	if (i == 10) {
+		return;
+	} else {
+		atual = tabela[i];
+		j = i - 1;
+		
+		while((j >= 0) && (strcmp(atual.time, tabela[j].time) > 0)) {
+			tabela[j+1] = tabela[j];
+			j = j - 1;
+		}
+		
+		tabela[j + 1] = atual;
+		insertionSort(tabela, i+1);
+		printf("[%i] %s\n", i, tabela[i].time);
+	}
+}
+
 
 Br busca(Br tabela[], int i, char nomeTime[]) {
 	if (i < 10){
@@ -150,12 +204,13 @@ int main() {
 	
 	int j = 0;
 	int k = 9;
-	
+	int l = 1;
 	int op;
 	char nomeTime[50];
 	
 	do {
-		printf("\t    *.*.*.* BRASILEIRAO *.*.*.*\n\t-.-.- tabela de classificação -.-.-\n\n\n 1) Posição dos times \n 2) Primeiros colocados\n 3) Ultimos colocados\n 4) Diferença de pontos entre os cinco primeiros\n 5) Diferença de pontos entre os cinco ultimos\n 6) Buscar time\n 0) SAIR\n Opção: ");
+		printf("\t    *.*.*.* BRASILEIRAO *.*.*.*\n\t-.-.- tabela de classificação -.-.-\n\n\n 1) Posição dos times \n 2) Primeiros colocados\n 3) Ultimos colocados\n 4) Diferença de pontos entre os cinco primeiros\n 5) Diferença de pontos entre os cinco ultimos\n 6) Buscar time\n ");
+		printf("7) Insertion Sort\n 8) Selection Sort\n 0) SAIR\n Opção: ");
 		scanf("%i", &op);
 		
 		switch(op) {
@@ -170,22 +225,11 @@ int main() {
 				scanf("%s", nomeTime);
 				busca(tabela, j, nomeTime); 
 				break;
+			case 7: insertionSort(tabela, l); break;
+			case 8: selectionSort(tabela, j); break;
 			case 0: exit(1); break;
 		}
 	}while(op != 0);
-// Nome e Posicao
-//	nomeEPosicao(tabela, j);
-	
-	// Exibir os 5 primeiros
-//	primeirosCincoColocados(tabela, j);
-	
-	// Exibir os 5 ultimos 
-//	ultimosCincoColocados(tabela, k);
-	
-	//Diferença de ponto entre os 5 primeiros
-//	difCincoP(tabela, j);
-	
-	difCincoU(tabela, k);
 	
 	return 0;
 }
