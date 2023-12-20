@@ -1,8 +1,6 @@
 # 🫧 Analise e Projeto de Algoritmos
 ## 📌 Projetos / Exercícios
-### 🧱 Primeira etapa:
 - [x] Lista de exercício
-- [ ] Projeto I
-- [ ] Projeto II
-- [ ] Projeto III
-- [ ] Projeto IV
+- [x] Projeto I: Gerenciamento de Estoque
+- [x] Projeto II: Tabela do Brasileirão
+- [ ] Projeto III: Criptografia
